@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="myCtrl">
+    <div class="container-fluid" id="nav">
+    <h3 id="email">Outlook</h3>
+    <button class="btn" ng-click="addFolder()" id="addFolder"><i class="fa fa-pencil-square-o"></i>Add new Folder</button>&nbsp;&nbsp;
+    <button class="btn" id="addMessage"><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="newMessage()">New Message</i></button>
+    </div>
+    <br>
+    <div class="container container-border">
+    <div class="row">
+        <div class="col-md-3">
+        <div ng-repeat="file in folder track by $index">
+            <a id="btn" class="btn" ui-sref="mail.folder.preview({folder: file.name})" ui-sref-active="activeTab" ng-click="messages($index)">
+                {{file.name}}
+            </a><br><br>
+        </div>
+        </div>
+        <span class="navbar-spinner" ng-if="showSpinner">
+            <img src="images/flickr-loading.gif">
+        </span>
+        <div ui-view></div>
+    </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="//unpkg.com/@uirouter/angularjs@1.0.5/release/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="src/app.js"></script>
+    <script src="src/main_controller.js"></script>
+    <script src="src/routes.js"></script>
+    <script src="src/factory.js"></script>
+    <script src="src/tabController.js"></script>
+    <script src="src/folderController.js"></script>
+    <script src="src/individualTabController.js"></script>
+    <script src="src/deleteMessageModalController.js"></script>
+    <script src="src/newMessageModalController.js"></script>
+    <script src="src/timeController.js"></script>
+</body>
+</html>
