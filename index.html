@@ -18,7 +18,7 @@
     <br>
     <div class="container container-border">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
         <div ng-repeat="file in folder track by $index">
             <a id="btn" class="btn" ui-sref="mail.folder.preview({folder: file.name})" ui-sref-active="activeTab" ng-click="messages($index)">
                 {{file.name}}

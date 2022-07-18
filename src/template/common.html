@@ -8,9 +8,9 @@
       </div>
 <table class="table table-hover">
     <tr ng-repeat="msg in messageArr track by $index">
-        <td ui-sref="mail.folder.preview({messageId: $index})">{{msg.content}}</td>
-        <td ui-sref="mail.folder.preview({messageId: $index})">{{msg.subject}}</td>
-        <td ui-sref="mail.folder.preview({messageId: $index})"><input type="checkbox" name="checkbox" id="checkbox" ng-model="msg.isDeleted"></td>
+        <td ui-sref="mail.folder.preview({messageId: msg.id})">{{msg.content}}</td>
+        <td ui-sref="mail.folder.preview({messageId: msg.id})">{{msg.subject}}</td>
+        <td ui-sref="mail.folder.preview({messageId: msg.id})"><input type="checkbox" name="checkbox" id="checkbox" ng-model="msg.isDeleted"></td>
         <td><button><i class="fa fa-trash" aria-hidden="true" ng-click="deleteMsg($index)"></i></button></td>
     </tr>
 </table>

@@ -42,7 +42,7 @@ body{
     border: 1px solid #ccc;  
 }
 
-.col-md-3{
+.col-md-2{
     height: 457px;
     border-right: 1px solid #ccc;
     overflow-y: auto;
