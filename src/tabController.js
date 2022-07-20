@@ -1,8 +1,9 @@
 app.controller('tabController', tabController);
 
-tabController.$inject = ['$scope', 'Factory', '$modal'];
-function tabController($scope, Factory, $modal)
-{
+tabController.$inject = ['$scope', 'Factory', '$modal', '$state'];
+function tabController($scope, Factory, $modal, $state)
+{   
+    $state.go('mail.folder.preview', {messageId: null});
     $scope.showAlert = Factory.showAlert();
     $scope.deleteMsg = function(index)
     {
@@ -20,7 +21,6 @@ function tabController($scope, Factory, $modal)
                 },
                 showAlert: function()
                 {
-                    console.log($scope.showAlert);
                     return $scope.showAlert;
                 }
             }

@@ -22,3 +22,16 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+#divChild{
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 991px){
+    #child{
+        height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}

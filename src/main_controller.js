@@ -1,26 +1,59 @@
 app.controller('myCtrl', function($scope, Factory, $modal, $log, $timeout){
     $scope.folder = Factory.getAllFolder();
+    $scope.showFolderAlert = Factory.showAlert();
     $scope.addFolder = function()
     {
         $scope.show = false;
         var modal = $modal.open({
             templateUrl: 'src/template/folderAddition.html',
-            controller: 'folderController'
+            controller: 'folderController',
+            resolve: {
+                showFolderAlert: function()
+                {
+                    return $scope.showFolderAlert;
+                }
+            }
         })
-        modal.result.then(function(){
-            $log.info('Modal dismissed at '+ new Date());
+        modal.result.then(function(showFolderAlert){
+            $scope.showFolderAlert = showFolderAlert;
         })
     }
+    $scope.closeAlert = function()
+    {
+        $scope.showFolderAlert = false;
+    }
+    $scope.closeMessageAlert = function()
+    {
+        $scope.showMessageAlert = false;
+    }
     $scope.messageArr = Factory.messagesArray();
+    $scope.showMesg = Factory.showMesg();
     $scope.messages = function(index)
     {
-        var promise = Factory.getMessage(index);
-        promise.then(function(data){
-            $timeout(function () {
-                $scope.showSpinner = false;
+        $scope.messageArr = [];
+        $scope.showSpinner = true;
+        $scope.showMesg = false;
+        $scope.styleDiv = {
+            "background-color": "rgb(240, 240, 240)"
+        }
+        Factory.getMessage(index).then(function(data){
+            if(data.length!=0)
+            {
                 $scope.messageArr = data;
-            }, 2000);
-            $scope.showSpinner = true;
+                $scope.showSpinner = false;
+                $scope.showMesg = false;
+                $scope.styleDiv = {
+                    "background-color": "white"
+                }
+            }
+            else
+            {
+                $scope.showMesg = true;
+                $scope.showSpinner = false;
+                $scope.styleDiv = {
+                    "background-color": "white"
+                }
+            }
         }).catch(function(err){
             console.log(err);
         })
@@ -45,3 +78,13 @@ app.controller('myCtrl', function($scope, Factory, $modal, $log, $timeout){
         })
     }
 })
+
+
+// $timeout(function () {
+//     $scope.messageArr = data;
+//     $scope.showSpinner = false;
+//     $("#div1").removeClass('cssOpaque');
+// }, 2000);
+// $("#div1").addClass('cssOpaque');
+// $scope.messageArr = [];
+// $scope.showSpinner = true;

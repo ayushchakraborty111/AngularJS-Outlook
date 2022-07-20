@@ -7,11 +7,23 @@ body{
 }
 
 #email{
-    margin-top: -7px;
-    padding-top: 10px;
+    margin-top: -33px;
     background-color: rgb(129, 129, 228);
-    height: 45px;
+    height: 65px;
     color: white;
+}
+
+
+.navbar-spinner{
+    position: absolute;
+    z-index: 3;
+    margin-left: 7em;
+    margin-top: 5em;
+}
+
+
+h3{
+    padding: 10px;
 }
 
 #addFolder, #addMessage{
@@ -90,4 +102,37 @@ body{
 .hidden {
     display: none !important;
     visibility: hidden !important;
+}
+
+@media screen and (max-width: 991px){
+    .col-md-2{
+        height: 170px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .input-group{
+        margin-top: -40px;
+    }    
+}
+
+@media screen and (max-width: 768px){
+    .input-group{
+        margin-top: -75px;
+        margin-left: 160px;
+        width: 40%;
+    }    
+}
+
+#searchInput{
+    margin-top: 5vh;
+    color: black;
+    /* border: none; */
+}
+
+/* #searchInput:focus{
+    border: none;
+} */
+
+.cssOpaque{
+    background-color: rgb(197, 190, 190);
 }

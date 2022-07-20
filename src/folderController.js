@@ -4,12 +4,13 @@ app.controller('folderController', function($scope, $modalInstance, Factory){
     $scope.messages = Factory.messagesArray();
     $scope.ok = function()
     {
-        $scope.show = true;
         $scope.folder.push({
             name: this.input1,
             id: this.messages.length+1,
             messages: this.messages
         });
+        $scope.show = true;
+        $scope.showFolderAlert = true;
         $modalInstance.close($scope.show);
     }
     $scope.cancel = function()

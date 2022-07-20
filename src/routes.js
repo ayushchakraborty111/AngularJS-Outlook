@@ -8,8 +8,8 @@ function routesConfig($stateProvider, $urlRouterProvider)
     $stateProvider
     .state('mail', {
         url: '/mail',
-        template: '<ui-view/>',
-        abstract: true
+        template: '<ui-view></ui-view>',
+        abstract: true,
     })
     .state('mail.folder', {
         url: '/{folder}',
@@ -17,10 +17,10 @@ function routesConfig($stateProvider, $urlRouterProvider)
         abstract: true,
         controller: 'tabController',
         resolve: {
-            loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            loadMyCtrl: function($ocLazyLoad) {
                 return $ocLazyLoad.load('src/styles/common.css');
-            }]
-        }
+            }
+        },
     })
     .state('mail.folder.preview', {
         url: '/{messageId}',
@@ -35,9 +35,9 @@ function routesConfig($stateProvider, $urlRouterProvider)
             }
         },
         resolve: {
-            load: ['$ocLazyLoad', function($ocLazyLoad) {
+            load: function($ocLazyLoad) {
                 return $ocLazyLoad.load('src/styles/description.css');
-            }]
+            }
         }
     })
 }

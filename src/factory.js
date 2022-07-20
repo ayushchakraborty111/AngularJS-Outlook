@@ -96,9 +96,18 @@ function Factory($q, $timeout)
     factoryObj.getMessage = function(folderId)
     {
         var deferred = $q.defer();
-            var msg = [];
-            msg = folder[folderId].messages;
-            deferred.resolve(msg);
+        setTimeout(function(){
+            if(folderId>=0)
+            {
+                var msg = [];
+                msg = folder[folderId].messages;
+                deferred.resolve(msg);
+            }
+            else
+            {
+                deferred.reject('folder id not applicable');
+            }
+        }, 2000)
         return deferred.promise;
     }
     factoryObj.getAllFolder = function()
@@ -130,6 +139,10 @@ function Factory($q, $timeout)
         return false;
     }
     factoryObj.showSpinner = function()
+    {
+        return false;
+    }
+    factoryObj.showMesg = function()
     {
         return false;
     }

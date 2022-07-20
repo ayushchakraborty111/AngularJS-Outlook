@@ -18,7 +18,21 @@
 
 #secondCol{
     border-right: 1px solid #ccc;
-    height: 430px;
+    height: 453px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+.activeTab{
+    background-color: rgb(129, 129, 228);
+    width: 100%;
+    color: rgb(10, 10, 127);
+}
+
+@media screen and (max-width: 990px){
+    #secondCol{
+        height: 180px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 }

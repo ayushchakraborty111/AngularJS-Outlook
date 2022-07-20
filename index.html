@@ -11,24 +11,40 @@
 </head>
 <body ng-controller="myCtrl">
     <div class="container-fluid" id="nav">
-    <h3 id="email">Outlook</h3>
+    <nav id="email">
+        <div class="row">
+            <div class="col-sm-2">
+                <h3>Outlook</h3>
+            </div>
+            <div class="col-sm-4 input-group">
+                <input type="text" class="form-control"  id="searchInput" ng-model="search">
+            </div>
+        </div>
+    </nav>
+    <div class="alert alert-success alert-dismissible" role="alert" ng-if="showFolderAlert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="closeAlert()"><span aria-hidden="true">&times;</span></button>
+        <strong>Folder Added Successfully</strong> 
+    </div>
+    <br>
     <button class="btn" ng-click="addFolder()" id="addFolder"><i class="fa fa-pencil-square-o"></i>Add new Folder</button>&nbsp;&nbsp;
     <button class="btn" id="addMessage"><i class="fa fa-pencil-square-o" aria-hidden="true" ng-click="newMessage()">New Message</i></button>
     </div>
     <br>
     <div class="container container-border">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2" id="main">
         <div ng-repeat="file in folder track by $index">
             <a id="btn" class="btn" ui-sref="mail.folder.preview({folder: file.name})" ui-sref-active="activeTab" ng-click="messages($index)">
                 {{file.name}}
             </a><br><br>
         </div>
         </div>
+        <div class="col-md-10">
         <span class="navbar-spinner" ng-if="showSpinner">
             <img src="images/flickr-loading.gif">
         </span>
-        <div ui-view></div>
+        <div ui-view ng-style="styleDiv"></div>
+        </div>
     </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
@@ -37,6 +53,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/oclazyload/1.1.0/ocLazyLoad.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="src/app.js"></script>
     <script src="src/main_controller.js"></script>
     <script src="src/routes.js"></script>
